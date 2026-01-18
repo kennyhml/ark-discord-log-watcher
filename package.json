@@ -1,0 +1,33 @@
+{
+  "name": "ark-log-watcher",
+  "version": "1.0.0",
+  "description": "Immer ein Auge auf dem Log",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsup src",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kennyhml/ark-log-watcher.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kennyhml/ark-log-watcher/issues"
+  },
+  "homepage": "https://github.com/kennyhml/ark-log-watcher#readme",
+  "devDependencies": {
+    "@types/node": "^24.0.5",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "discord.js": "^14.21.0",
+    "dotenv": "^17.2.3"
+  }
+}
