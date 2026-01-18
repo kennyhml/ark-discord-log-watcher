@@ -27,7 +27,7 @@ client.on('messageCreate', async (msg: Message) => {
 	});
 });
 
-client.once('ready', () => {
+client.once('clientReady', () => {
 	console.log('Bot is ready.');
 
 	setInterval(
