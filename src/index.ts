@@ -9,6 +9,8 @@ const client = new Client({
 	],
 });
 
+var lastPing: Date | undefined = undefined;
+
 client.on('messageCreate', async (msg: Message) => {
 	if (msg.guildId !== config.GUILD_ID || msg.channelId != config.CHANNEL_ID) {
 		return;
@@ -19,12 +21,18 @@ client.on('messageCreate', async (msg: Message) => {
 		return;
 	}
 
+	const now = new Date();
+	const delta = lastPing ? now.valueOf() - lastPing.valueOf() : -1;
+	if (delta !== -1 && delta < config.PING_COOLDOWN * 60 * 1000) {
+		return;
+	}
 	const quoteIdx = Math.floor(Math.random() * drachenlordQuotes.length);
 	const quote = drachenlordQuotes[quoteIdx];
 	await msg.reply({
 		content: `**${quote}**\n${config.ALERT_PING}`,
 		allowedMentions: { parse: ['everyone', 'users', 'roles'] },
 	});
+	lastPing = new Date();
 });
 
 client.once('clientReady', () => {

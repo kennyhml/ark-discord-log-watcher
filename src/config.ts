@@ -2,8 +2,14 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const { BOT_TOKEN, GUILD_ID, CHANNEL_ID, ALERT_TERMS, ALERT_PING } =
-	process.env;
+const {
+	BOT_TOKEN,
+	GUILD_ID,
+	CHANNEL_ID,
+	ALERT_TERMS,
+	ALERT_PING,
+	PING_COOLDOWN,
+} = process.env;
 
 if (!BOT_TOKEN || !GUILD_ID || !CHANNEL_ID || !ALERT_TERMS || !ALERT_PING) {
 	throw new Error('Configuration missing.');
@@ -27,6 +33,7 @@ export const config = {
 	GUILD_ID,
 	CHANNEL_ID,
 	ALERT_PING,
+	PING_COOLDOWN: parseInt(PING_COOLDOWN ?? '5'),
 	ALERT_TERMS: ALERT_TERMS.split(';')
 		.map((v) => v.trim().toLowerCase())
 		.filter((v) => v.length > 0),
